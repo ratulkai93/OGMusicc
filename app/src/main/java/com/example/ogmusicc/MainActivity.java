@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 
 
@@ -28,6 +29,15 @@ public class MainActivity extends AppCompatActivity {
         songView=(ListView)findViewById(R.id.song_list); //to retrive listview instance
         songList= new ArrayList<Song>();
 
+        getSongList();//calls the list for songs
+
+        Collections.sort(songList, new Comparator<Song>() {
+            @Override
+            public int compare(Song a, Song b) {
+                //will alphabetically place the songs on list
+                return a.getTitle().compareTo(b.getTitle());
+            }
+        });
     }
     public void getSongList(){
         //to retrive info on songs
